@@ -1,12 +1,14 @@
-package database;
+package edu.gsu.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class ConnectorJ {
+public class DatabaseConnection {
 	
 	public static void main(String[] args) throws Exception {
+		
 		getConnection();
+		
 	}
 	
 	public static Connection getConnection() throws Exception{
@@ -20,16 +22,9 @@ public class ConnectorJ {
 			Connection conn = DriverManager.getConnection(url,username,password);
 			System.out.println("Connected");
 			return conn;
-		} catch(Exception e) {System.out.println(e);}
-		
+		}catch(Exception e) {System.out.println(e);}
 		
 		return null;
-		
 	}
 
 }
-
-
-// this is the updated version to check the github uodates 
-
-
