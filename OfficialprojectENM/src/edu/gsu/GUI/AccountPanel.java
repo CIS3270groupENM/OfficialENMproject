@@ -432,3 +432,4 @@ public class AccountPanel extends Application {
 		}
 	}
 }
+
