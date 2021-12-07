@@ -40,9 +40,9 @@ public class BizLogicProcess {
             case Action.FIND_PASSWORD:
                 statement = DBQueryIM.password(c1);
                 break;
-            case Action.FLIGHT_NUM:
-                statement = DBQueryIM.royalty(c1);
-                break;
+           // case Action.FLIGHT_NUM:
+               // statement = DBQueryIM.royalty(c1);
+            ///    break;
             case Action.FIRST_NAME:
                 statement = DBQueryIM.first(c1);
                 break;
