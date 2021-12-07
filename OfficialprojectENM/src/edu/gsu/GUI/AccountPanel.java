@@ -15,8 +15,14 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
+import projectClasses.Main;
 
 public class AccountPanel extends Application {
+
+	//Image image = new Image("airport.jpg", 1600, 700, false, false);
+	//BackgroundImage bgi = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
+		//	BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+	//Background bg = new Background(bgi);
 
 	private TableView<Flight> tableViewFlights;
 	private TableColumn<Flight, String> colFlightID;
@@ -70,11 +76,6 @@ public class AccountPanel extends Application {
 	private Customer customer;
 	private Flight flight = new Flight();
 	private ObservableList<Flight> blank = FXCollections.observableArrayList();
-	
-	//Image image = new Image("airport.jpg", 1600, 700, false, false);
-		//BackgroundImage bgi = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
-			//	BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
-		//Background bg = new Background(bgi);
 
 	public AccountPanel (Customer customer) {
 		this.customer = customer;
@@ -95,9 +96,8 @@ public class AccountPanel extends Application {
 		window = primaryStage;
 		window.setTitle("ENM Airlines Flight Booking");
 		window.setResizable(false);
-//		window.setHeight(600);
-//		window.setWidth(1250);
-		window.setFullScreen(true);
+		window.setHeight(600);
+		window.setWidth(1250);
 		
 
 		primaryStage.getTitle();
@@ -114,15 +114,14 @@ public class AccountPanel extends Application {
 		colArrTime = new TableColumn<>("Arrive Time");
 		colDepDate = new TableColumn<>("Date");
 		
-	  
 		colFlightID.setCellValueFactory(new PropertyValueFactory<Flight, String>("flightNo"));
 		colAirline.setCellValueFactory(new PropertyValueFactory<Flight, String>("airlineName"));
-		colDepart.setCellValueFactory(new PropertyValueFactory<Flight, String>("dept_city"));
-		colArrive.setCellValueFactory(new PropertyValueFactory<Flight, String>("arrival_city"));
-		colDepTime.setCellValueFactory(new PropertyValueFactory<Flight, String>("dept_time"));
-		colArrTime.setCellValueFactory(new PropertyValueFactory<Flight, String>("arrival_time"));
+		colDepart.setCellValueFactory(new PropertyValueFactory<Flight, String>("departure"));
+		colArrive.setCellValueFactory(new PropertyValueFactory<Flight, String>("arrival"));
+		colDepTime.setCellValueFactory(new PropertyValueFactory<Flight, String>("depTime"));
+		colArrTime.setCellValueFactory(new PropertyValueFactory<Flight, String>("arrTime"));
 		colDepDate.setCellValueFactory(new PropertyValueFactory<Flight, String>("date"));
-
+		
 		colFlightID.prefWidthProperty().bind(tableViewFlights.widthProperty().multiply(0.1));
 		colAirline.prefWidthProperty().bind(tableViewFlights.widthProperty().multiply(0.191));
 		colDepart.prefWidthProperty().bind(tableViewFlights.widthProperty().multiply(0.14));
@@ -184,17 +183,17 @@ public class AccountPanel extends Application {
 		tableViewAllFlights.setPrefWidth(575);
 		tableViewAllFlights.setItems(blank);
 
-		user = new Label("Welcome " + customer.getFirstName() + " " + customer.getLastName() + "!");
+		user = new Label(" WELCOME " + customer.getLastName() + ", " + customer.getFirstName() + "!");
 		myFlights = new Label("My Flights");
 		allFlights = new Label("Available Flights");
 
-		user.setFont(Font.font(STYLESHEET_MODENA, FontWeight.BOLD, 24));
-		myFlights.setFont(Font.font(STYLESHEET_MODENA, FontWeight.BOLD, 20));
-		allFlights.setFont(Font.font(STYLESHEET_MODENA, FontWeight.BOLD, 20));
+		user.setFont(Font.font(STYLESHEET_CASPIAN, FontWeight.BOLD, 24));
+		myFlights.setFont(Font.font(STYLESHEET_CASPIAN, FontWeight.BOLD, 20));
+		allFlights.setFont(Font.font(STYLESHEET_CASPIAN, FontWeight.BOLD, 20));
 
-		user.setStyle("-fx-text-fill: BLACK;");
-		myFlights.setStyle("-fx-text-fill: BLACK;");
-		allFlights.setStyle("-fx-text-fill: BLACK;");
+		user.setStyle("-fx-text-fill: White;");
+		myFlights.setStyle("-fx-text-fill: White;");
+		allFlights.setStyle("-fx-text-fill: White;");
 
 		labDep = new Label("FROM:");
 		labArr = new Label("TO:");
@@ -202,17 +201,17 @@ public class AccountPanel extends Application {
 		labAir = new Label("AIRLINE:");
 		labDepDate = new Label("DATE:");
 
-		labDep.setFont(Font.font(STYLESHEET_MODENA, FontWeight.BOLD, 16));
-		labArr.setFont(Font.font(STYLESHEET_MODENA, FontWeight.BOLD, 16));
-		labTime.setFont(Font.font(STYLESHEET_MODENA, FontWeight.BOLD, 16));
-		labAir.setFont(Font.font(STYLESHEET_MODENA, FontWeight.BOLD, 16));
-		labDepDate.setFont(Font.font(STYLESHEET_MODENA, FontWeight.BOLD, 16));
+		labDep.setFont(Font.font(STYLESHEET_CASPIAN, FontWeight.BOLD, 16));
+		labArr.setFont(Font.font(STYLESHEET_CASPIAN, FontWeight.BOLD, 16));
+		labTime.setFont(Font.font(STYLESHEET_CASPIAN, FontWeight.BOLD, 16));
+		labAir.setFont(Font.font(STYLESHEET_CASPIAN, FontWeight.BOLD, 16));
+		labDepDate.setFont(Font.font(STYLESHEET_CASPIAN, FontWeight.BOLD, 16));
 
-		labDep.setStyle("-fx-text-fill: BLACK;");
-		labArr.setStyle("-fx-text-fill: BLACK;");
-		labTime.setStyle("-fx-text-fill: BLACK;");
-		labAir.setStyle("-fx-text-fill: BLACK;");
-		labDepDate.setStyle("-fx-text-fill: BLACK;");
+		labDep.setStyle("-fx-text-fill: White;");
+		labArr.setStyle("-fx-text-fill: White;");
+		labTime.setStyle("-fx-text-fill: White;");
+		labAir.setStyle("-fx-text-fill: White;");
+		labDepDate.setStyle("-fx-text-fill: White;");
 
 		depLocation = new TextField();
 		depLocation.setPromptText("ex: NYC");
@@ -298,7 +297,7 @@ public class AccountPanel extends Application {
 		hSearch2.getChildren().addAll(departHour);
 
 		HBox all = new HBox();
-		all.getChildren().addAll(labDep,depLocation,labArr,arrLocation,labAir,airline,labDepDate,hSearch1,labTime, hSearch2);
+		all.getChildren().addAll(labDep,depLocation,labArr,arrLocation,labAir,airline,labDepDate,hSearch1,labTime,hSearch2);
 		all.setSpacing(15);
 
 		Pane acct = new Pane();
@@ -306,7 +305,7 @@ public class AccountPanel extends Application {
 		all.setLayoutX(60);
 		all.setLayoutY(75);
 
-		search.setLayoutX(925);
+		search.setLayoutX(1100);
 		search.setLayoutY(75);
 		update.setLayoutX(488);
 		update.setLayoutY(120);
@@ -320,13 +319,13 @@ public class AccountPanel extends Application {
 		myFlights.setLayoutY(120);
 		tableViewFlights.setLayoutX(25);
 		tableViewFlights.setLayoutY(150);
-		allFlights.setLayoutX(25);
-		allFlights.setLayoutY(520);
-		tableViewAllFlights.setLayoutX(25);
-		tableViewAllFlights.setLayoutY(550);
+		allFlights.setLayoutX(635);
+		allFlights.setLayoutY(120);
+		tableViewAllFlights.setLayoutX(635);
+		tableViewAllFlights.setLayoutY(150);
 		btLogout.setLayoutX(1150);
 		btLogout.setLayoutY(25);
-		user.setLayoutX(600);
+		user.setLayoutX(25);
 		user.setLayoutY(20);
 		acct.getChildren().addAll(tableViewFlights, tableViewAllFlights, search, update, delete, showAll,
 				book, all, myFlights, allFlights, btLogout, user);
@@ -432,5 +431,3 @@ public class AccountPanel extends Application {
 		}
 	}
 }
-
-//

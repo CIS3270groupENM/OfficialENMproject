@@ -200,7 +200,7 @@ public class Main extends Application {
 		});
 		bCreate = new Button("Create");
 		bCreate.setOnAction(e-> {
-
+			
 			if (usnText1.getText().isBlank() && pswText1.getText().isBlank() && fnameText.getText().isBlank() &&
 					lnameText.getText().isBlank() && emText.getText().isBlank() && addText.getText().isBlank() &&
 					zipText.getText().isBlank() && stateText.getText().isBlank() && ssnText.getText().isBlank() &&
@@ -398,26 +398,25 @@ public class Main extends Application {
 				forgotScene = new Scene(forgotLayout, 775, 300);
 
 			}
-	public void login(String loginID, String psw) {
+
+public void login(String loginID, String psw) {
 
 		Customer c1 = new Customer();
 
 		c1.setUserName(loginID);
 		c1.setPassword(psw);
 		c1.setAction(Action.LOGIN);
-
+		
 		System.out.println("Customer: " + loginID + " " + psw);
 
 		boolean loginSuccess = PopUP.confirmation(c1);
-
+		
 		if (loginSuccess) {
 
 			System.out.println("Successful Login!");
-
-			c1.setAction(Action.FLIGHT_NUM);
-			c1.setflightNum(PopUP.find(c1));
-
+			System.out.println(c1.toString());
 			c1.setAction(Action.FIRST_NAME);
+			c1.setId(1);
 			c1.setFirstName(PopUP.find(c1));
 
 			c1.setAction(Action.LAST_NAME);
@@ -442,21 +441,18 @@ public class Main extends Application {
 			   String State, String SocialSecurity, String SecurityQuestion, String SecurityAnswer) {
 
 Random rand = new Random();
-String flightNumber = rand.nextInt(10000) + "";
-
-//c1.setflightNum(flightNumber);
 c1.setFirstName(FirstName);
 c1.setLastName(LastName);
-c1.setAddress(Address);
-c1.setZip(ZipCode);
-c1.setState(State);
 c1.setUserName(LoginID);
 c1.setPassword(Password);
 c1.setEmail(Email);
+c1.setAddress(Address);
+c1.setZip(ZipCode);
+c1.setState(State);
 c1.setSSN(SocialSecurity);
 c1.setSecurityQ(SecurityQuestion);
 c1.setSecurityA(SecurityAnswer);
-c1.setAction(Action.user);
+c1.setAction(Action.REGISTER);
 
 try {
 
@@ -477,9 +473,6 @@ e.printStackTrace();
 
 		c1.setUserName(loginID);
 		c1.setAction(Action.FIND_QUESTION);
-
-	//	System.out.println("Customer: " + loginID);
-	//	System.out.println("Password: " + PopUP.find(c1));
 
 		c1.setSecurityQ(PopUP.find(c1));
 
@@ -503,6 +496,11 @@ e.printStackTrace();
 	}
 
 
-}
 
-//
+
+	}
+
+
+	
+
+
