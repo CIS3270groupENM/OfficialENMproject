@@ -8,7 +8,7 @@ public class Action {
     public static final String FIRST_NAME = "first";
     public static final String LAST_NAME = "last";
     public static final String GET_MY_FLIGHTS = "getMyFlights";
-    public static final String user = "register";
+    public static final String REGISTER = "register";
     public static final String FIND_QUESTION = "question";
     public static final String FIND_PASSWORD = "password";
     public static final String FLIGHT_SEARCH = "searchFLights";

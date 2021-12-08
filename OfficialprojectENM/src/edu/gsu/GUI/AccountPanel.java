@@ -15,15 +15,9 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
-import projectClasses.Main;
 
 public class AccountPanel extends Application {
-
-	//Image image = new Image("airport.jpg", 1600, 700, false, false);
-	//BackgroundImage bgi = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
-		//	BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
-	//Background bg = new Background(bgi);
-
+	
 	private TableView<Flight> tableViewFlights;
 	private TableColumn<Flight, String> colFlightID;
 	private TableColumn<Flight, String> colAirline;
@@ -62,9 +56,8 @@ public class AccountPanel extends Application {
 	Label labAir;
 	Label labDepDate;
 
-	TextField depLocation;
-	TextField arrLocation;
-	TextField departHour;
+	ComboBox depLocation;
+	ComboBox arrLocation;
 	ComboBox airline;
 	ComboBox departMo;
 	ComboBox departDay;
@@ -86,7 +79,9 @@ public class AccountPanel extends Application {
 
 		blank.add(new Flight(0,"", "","","","","",0));
 
-		String airlines[] = { null,"Delta", "American", "JapanAirlines", "AirFrance", "Spirit" };
+		String depLocations[] = { null, "ATL" };
+		String arrLocations[] = { null, "MIA", "HOU", "DAL", "MNY", "CHI", "BOS" };
+		String airlines[] = { null,"Delta", "American", "Spirit" };
 		String months[] = { null,"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"};
 		String days[] = { null,"01", "02", "03", "04", "05", "06", "07", "08", "09", "10",
 				"11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
@@ -183,45 +178,39 @@ public class AccountPanel extends Application {
 		tableViewAllFlights.setPrefWidth(575);
 		tableViewAllFlights.setItems(blank);
 
-		user = new Label(" WELCOME " + customer.getLastName() + ", " + customer.getFirstName() + "!");
+		user = new Label(" WELCOME " + customer.getFirstName() + " " + customer.getLastName() + "!");
 		myFlights = new Label("My Flights");
 		allFlights = new Label("Available Flights");
 
-		user.setFont(Font.font(STYLESHEET_CASPIAN, FontWeight.BOLD, 24));
-		myFlights.setFont(Font.font(STYLESHEET_CASPIAN, FontWeight.BOLD, 20));
-		allFlights.setFont(Font.font(STYLESHEET_CASPIAN, FontWeight.BOLD, 20));
+		user.setFont(Font.font(STYLESHEET_MODENA, FontWeight.NORMAL, 24));
+		myFlights.setFont(Font.font(STYLESHEET_MODENA, FontWeight.NORMAL, 20));
+		allFlights.setFont(Font.font(STYLESHEET_MODENA, FontWeight.NORMAL, 20));
 
-		user.setStyle("-fx-text-fill: White;");
-		myFlights.setStyle("-fx-text-fill: White;");
-		allFlights.setStyle("-fx-text-fill: White;");
+		user.setStyle("-fx-text-fill: Black;");
+		myFlights.setStyle("-fx-text-fill: Black;");
+		allFlights.setStyle("-fx-text-fill: Black;");
 
 		labDep = new Label("FROM:");
 		labArr = new Label("TO:");
-		labTime = new Label("AT:");
 		labAir = new Label("AIRLINE:");
 		labDepDate = new Label("DATE:");
 
-		labDep.setFont(Font.font(STYLESHEET_CASPIAN, FontWeight.BOLD, 16));
-		labArr.setFont(Font.font(STYLESHEET_CASPIAN, FontWeight.BOLD, 16));
-		labTime.setFont(Font.font(STYLESHEET_CASPIAN, FontWeight.BOLD, 16));
-		labAir.setFont(Font.font(STYLESHEET_CASPIAN, FontWeight.BOLD, 16));
-		labDepDate.setFont(Font.font(STYLESHEET_CASPIAN, FontWeight.BOLD, 16));
+		labDep.setFont(Font.font(STYLESHEET_MODENA, FontWeight.NORMAL, 16));
+		labArr.setFont(Font.font(STYLESHEET_MODENA, FontWeight.NORMAL, 16));
+		labAir.setFont(Font.font(STYLESHEET_MODENA, FontWeight.NORMAL, 16));
+		labDepDate.setFont(Font.font(STYLESHEET_MODENA, FontWeight.NORMAL, 16));
 
-		labDep.setStyle("-fx-text-fill: White;");
-		labArr.setStyle("-fx-text-fill: White;");
-		labTime.setStyle("-fx-text-fill: White;");
-		labAir.setStyle("-fx-text-fill: White;");
-		labDepDate.setStyle("-fx-text-fill: White;");
+		labDep.setStyle("-fx-text-fill: Black;");
+		labArr.setStyle("-fx-text-fill: Black;");
+		labAir.setStyle("-fx-text-fill: Black;");
+		labDepDate.setStyle("-fx-text-fill: Black;");
 
-		depLocation = new TextField();
-		depLocation.setPromptText("ex: NYC");
-		depLocation.setPrefSize(80,25);
-		arrLocation = new TextField();
-		arrLocation.setPromptText("ex: SFO");
-		arrLocation.setPrefSize(80,25);
-		departHour = new TextField();
-		departHour.setPromptText("hr");
-		departHour.setPrefSize(45,25);
+		depLocation = new ComboBox(FXCollections.observableArrayList(depLocations));
+		depLocation.setPromptText("ex: ATL");
+		depLocation.setPrefSize(90,25);
+		arrLocation = new ComboBox(FXCollections.observableArrayList(arrLocations));
+		arrLocation.setPromptText("ex: NYC");
+		arrLocation.setPrefSize(90,25);
 		airline = new ComboBox(FXCollections.observableArrayList(airlines));
 		airline.setPrefSize(150, 25);
 		departMo = new ComboBox(FXCollections.observableArrayList(months));
@@ -236,7 +225,6 @@ public class AccountPanel extends Application {
 			String air;
 			String dep;
 			String arr;
-			String depT;
 			String depD;
 
 			if (airline.getSelectionModel().isEmpty())
@@ -244,15 +232,15 @@ public class AccountPanel extends Application {
 			else
 				air = (String) airline.getSelectionModel().getSelectedItem();
 
-			if (depLocation.getText().isBlank())
+			if (depLocation.getSelectionModel().isEmpty())
 				dep = null;
 			else
-				dep = depLocation.getText();
+				dep = (String) depLocation.getSelectionModel().getSelectedItem();
 
-			if (arrLocation.getText().isBlank())
+			if (arrLocation.getSelectionModel().isEmpty())
 				arr = null;
 			else
-				arr =  arrLocation.getText();
+				arr = (String) arrLocation.getSelectionModel().getSelectedItem();
 
 			if (departMo.getValue() == null || departDay.getValue() == null || departYear.getValue() == null) {
 				depD = null;
@@ -260,12 +248,6 @@ public class AccountPanel extends Application {
 				depD = departMo.getValue() + "/" + departDay.getValue() + "/" + departYear.getValue();
 			}
 
-			if (departHour.getText().isBlank())
-				depT = null;
-			else
-				depT = departHour.getText()+"%";
-
-			searching(air,dep,arr,depT,depD);
 		});
 
 		book = new Button("Book");
@@ -288,16 +270,12 @@ public class AccountPanel extends Application {
 		showAll = new Button("Show All");
 		showAll.setOnAction(e -> showAll(customer));
 
-		HBox hSearch1 = new HBox();
-		hSearch1.getChildren().addAll(departMo, departDay, departYear);
-		hSearch1.setSpacing(5);
-
-		HBox hSearch2 = new HBox();
-		hSearch2.setSpacing(5);
-		hSearch2.getChildren().addAll(departHour);
+		HBox hSearch = new HBox();
+		hSearch.getChildren().addAll(departMo, departDay, departYear);
+		hSearch.setSpacing(5);
 
 		HBox all = new HBox();
-		all.getChildren().addAll(labDep,depLocation,labArr,arrLocation,labAir,airline,labDepDate,hSearch1,labTime,hSearch2);
+		all.getChildren().addAll(labDep,depLocation,labArr,arrLocation,labAir,airline,labDepDate,hSearch);
 		all.setSpacing(15);
 
 		Pane acct = new Pane();
@@ -305,7 +283,7 @@ public class AccountPanel extends Application {
 		all.setLayoutX(60);
 		all.setLayoutY(75);
 
-		search.setLayoutX(1100);
+		search.setLayoutX(950);
 		search.setLayoutY(75);
 		update.setLayoutX(488);
 		update.setLayoutY(120);
@@ -325,7 +303,7 @@ public class AccountPanel extends Application {
 		tableViewAllFlights.setLayoutY(150);
 		btLogout.setLayoutX(1150);
 		btLogout.setLayoutY(25);
-		user.setLayoutX(25);
+		user.setLayoutX(500);
 		user.setLayoutY(20);
 		acct.getChildren().addAll(tableViewFlights, tableViewAllFlights, search, update, delete, showAll,
 				book, all, myFlights, allFlights, btLogout, user);
@@ -337,30 +315,6 @@ public class AccountPanel extends Application {
 
 	}
 
-	public ObservableList<Flight> searching
-			(String air, String dep, String arr, String depT, String depD){
-
-		ObservableList<Flight> flights = FXCollections.observableArrayList();
-
-		try {
-			flights = PopUP.searching(air,dep,arr,depT,depD);
-			tableViewAllFlights.setItems(flights);
-		}
-
-		catch (Exception e) {
-
-			Alert a1 = new Alert(Alert.AlertType.ERROR);
-			a1.setTitle("Search Fail");
-			a1.setHeaderText("Search Fail, please try again");
-			a1.setContentText(e.getMessage());
-
-			a1.showAndWait();
-
-		}
-
-		return flights;
-
-	}
 
 	public ObservableList<Flight> showAll(Customer c1) {
 

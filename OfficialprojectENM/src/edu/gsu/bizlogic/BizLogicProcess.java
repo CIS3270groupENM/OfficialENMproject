@@ -20,9 +20,9 @@ public class BizLogicProcess {
                 DBQueryIM.login(c1);
                 break;
 
-            case Action.user:
+            case Action.REGISTER:
 
-                DBQueryIM.user(c1);
+                DBQueryIM.register(c1);
                 break;
 
         }
@@ -67,14 +67,6 @@ public class BizLogicProcess {
                 break;
 
         }
-        return flight;
-    }
-
-    public static ObservableList<Flight> searching
-            (String air, String dep, String arr, String depT, String depD) throws Exception {
-
-        ObservableList<Flight> flight = DBQueryIM.searchFlights(air,dep,arr,depT,depD);
-
         return flight;
     }
 

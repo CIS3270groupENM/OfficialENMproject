@@ -128,29 +128,4 @@ public class PopUP {
 
 	}
 
-	public static ObservableList<Flight> searching
-			(String air, String dep, String arr, String depT, String depD) {
-
-		ObservableList<Flight> flights = FXCollections.observableArrayList();
-
-		try {
-			flights = BizLogicProcess.searching(air, dep, arr, depT, depD);
-
-		}
-
-		catch (Exception e) {
-
-			Alert a1 = new Alert(AlertType.ERROR);
-			a1.setTitle("Search Fail");
-			a1.setHeaderText("Search Fail, please try again");
-			a1.setContentText(e.getMessage());
-
-			a1.showAndWait();
-
-		}
-
-		return flights;
-
-	}
-
 }

@@ -249,9 +249,9 @@ public class Main extends Application {
 		border.setPrefSize(300,400);
 		border.setBackground(null);
 
-	//	Pane enmLogo = new Pane();
-	//	enmLogo.setPrefSize(400,80);
-	//	enmLogo.setBackground(null);
+		Pane enmLogo = new Pane();
+		enmLogo.setPrefSize(400,80);
+		enmLogo.setBackground(null);
 
 		AnchorPane log = new AnchorPane(border,loginLayout);
 		log.setTopAnchor(border, 0.0);
@@ -264,7 +264,7 @@ public class Main extends Application {
 		window.setResizable(false);
 
 		regiConfirm = new Label();
-		regiConfirm.setFont(Font.font(STYLESHEET_CASPIAN, FontWeight.BOLD, 14));
+		regiConfirm.setFont(Font.font(STYLESHEET_MODENA, FontWeight.NORMAL, 14));
 
 
 		Pane regisLayout = new Pane();
@@ -332,31 +332,31 @@ public class Main extends Application {
 		//forgot panel
 
 				id = new Label("Login ID: ");
-				id.setFont(Font.font(STYLESHEET_CASPIAN, FontWeight.BOLD, 14));
+				id.setFont(Font.font(STYLESHEET_MODENA, FontWeight.NORMAL, 14));
 				id.setStyle("-fx-text-fill: Black;");
 				id.setLayoutX(15);
 				id.setLayoutY(15);
 
 				c1Id = new Label();
-				c1Id.setFont(Font.font(STYLESHEET_CASPIAN, FontWeight.BOLD, 14));
+				c1Id.setFont(Font.font(STYLESHEET_MODENA, FontWeight.NORMAL, 14));
 				c1Id.setStyle("-fx-text-fill: Blue;");
 				c1Id.setLayoutX(150);
 				c1Id.setLayoutY(15);
 
 				q = new Label("Security Question: ");
-				q.setFont(Font.font(STYLESHEET_CASPIAN, FontWeight.BOLD, 14));
+				q.setFont(Font.font(STYLESHEET_MODENA, FontWeight.NORMAL, 14));
 				q.setStyle("-fx-text-fill: Black;");
 				q.setLayoutX(15);
 				q.setLayoutY(65);
 
 				c1Q = new Label();
-				c1Q.setFont(Font.font(STYLESHEET_CASPIAN, FontWeight.BOLD, 14));
+				c1Q.setFont(Font.font(STYLESHEET_MODENA, FontWeight.NORMAL, 14));
 				c1Q.setStyle("-fx-text-fill: Blue;");
 				c1Q.setLayoutX(150);
 				c1Q.setLayoutY(65);
 
 				a = new Label("Answer: ");
-				a.setFont(Font.font(STYLESHEET_CASPIAN, FontWeight.BOLD, 14));
+				a.setFont(Font.font(STYLESHEET_MODENA, FontWeight.NORMAL, 14));
 				a.setStyle("-fx-text-fill: Black;");
 				a.setLayoutX(15);
 				a.setLayoutY(115);
@@ -368,13 +368,13 @@ public class Main extends Application {
 				answer.setLayoutY(115);
 
 				yourPsw = new Label("Your password is: ");
-				yourPsw.setFont(Font.font(STYLESHEET_CASPIAN, FontWeight.BOLD, 14));
+				yourPsw.setFont(Font.font(STYLESHEET_MODENA, FontWeight.NORMAL, 14));
 				yourPsw.setStyle("-fx-text-fill: Black;");
 				yourPsw.setLayoutX(15);
 				yourPsw.setLayoutY(200);
 
 				retrievedPsw = new Label();
-				retrievedPsw.setFont(Font.font(STYLESHEET_CASPIAN, FontWeight.BOLD, 30));
+				retrievedPsw.setFont(Font.font(STYLESHEET_MODENA, FontWeight.NORMAL, 30));
 				retrievedPsw.setStyle("-fx-text-fill: Red;");
 				retrievedPsw.setLayoutX(15);
 				retrievedPsw.setLayoutY(225);
