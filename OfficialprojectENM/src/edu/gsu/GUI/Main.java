@@ -94,79 +94,79 @@ public class Main extends Application {
 		window.setTitle("ENM Airline Login");
 		
 		username = new Label("Login ID:");
-		username.setStyle("-fx-text-fill: Black;");
+		username.setStyle("-fx-text-fill: White;");
 		usnText = new TextField();
 		usnText.setPromptText("ex: cbrown11");
 		usnText.setPrefSize(300,25);
 		
 		username1 = new Label("Login ID:");
-		username1.setStyle("-fx-text-fill: Black;");
+		username1.setStyle("-fx-text-fill: White;");
 		usnText1 = new TextField();
 		usnText1.setPromptText("ex: jdoe78");
 		usnText1.setPrefSize(300,25);
 
 		password = new Label("Password:");
-		password.setStyle("-fx-text-fill: Black;");
+		password.setStyle("-fx-text-fill: White;");
 		pswText = new PasswordField();
 		pswText.setPromptText("ex: coolduck123");
 		pswText.setPrefSize(300,25);
 
 		password1 = new Label("Password:");
-		password1.setStyle("-fx-text-fill: Black;");
+		password1.setStyle("-fx-text-fill: White;");
 		pswText1 = new TextField();
 		pswText1.setPromptText("ex: coolduck123");
 		pswText1.setPrefSize(300,25);
 
 		firstName = new Label("First Name:");
-		firstName.setStyle("-fx-text-fill: Black;");
+		firstName.setStyle("-fx-text-fill: White;");
 		fnameText = new TextField();
 		fnameText.setPromptText("ex: Chris");
 		fnameText.setPrefSize(300,25);
 
 		lastName = new Label("Last Name:");
-		lastName.setStyle("-fx-text-fill: Black;");
+		lastName.setStyle("-fx-text-fill: White;");
 		lnameText = new TextField();
 		lnameText.setPromptText("ex: Brown");
 		lnameText.setPrefSize(300,25);
 
 		email = new Label("Email:");
-		email.setStyle("-fx-text-fill: Black;");
+		email.setStyle("-fx-text-fill: White;");
 		emText = new TextField();
 		emText.setPromptText("ex: cbrown123@gmail.com");
 		emText.setPrefSize(300,25);
 
 		address = new Label("Address:");
-		address.setStyle("-fx-text-fill: Black;");
+		address.setStyle("-fx-text-fill: White;");
 		addText = new TextField();
 		addText.setPromptText("ex: 25 Park Place");
 		addText.setPrefSize(300,25);
 
 		zip = new Label("ZIP Code:");
-		zip.setStyle("-fx-text-fill: Black;");
+		zip.setStyle("-fx-text-fill: White;");
 		zipText = new TextField();
 		zipText.setPromptText("ex: 12345");
 		zipText.setPrefSize(150,25);
 
 		state = new Label("State:");
-		state.setStyle("-fx-text-fill: Black;");
+		state.setStyle("-fx-text-fill: White;");
 		stateText = new TextField();
 		stateText.setPromptText("ex: GA");
 		stateText.setPrefSize(50,25);
 
 		ssn = new Label("SSN:");
-		ssn.setStyle("-fx-text-fill: Black;");
+		ssn.setStyle("-fx-text-fill: White;");
 		ssnText = new TextField();
 		ssnText.setPromptText("ex: 123456789");
 		ssnText.setPrefSize(300,25);
 
 		securityQ = new Label("Security Question:");
-		securityQ.setStyle("-fx-text-fill: Black;");
+		securityQ.setStyle("-fx-text-fill: White;");
 		sqText = new TextField();
 		sqText.setPromptText("ex: What is the name of your college");
 		sqText.setPrefSize(300,25);
 
 		securityA = new Label("Security Answer:");
-		securityA.setStyle("-fx-text-fill: Black;");
+		securityA.setStyle("-fx-text-fill: White;");
 		saText = new TextField();
 		saText.setPromptText("ex: Georgia State University");
 		saText.setPrefSize(300,25);
@@ -242,16 +242,16 @@ public class Main extends Application {
 		bRegi.setPrefSize(150,30);
 
 		loginLayout.setPrefSize(450, 400);
-		loginLayout.setStyle("-fx-background-color: white;");
+		loginLayout.setStyle("-fx-background-color: Blue;");
 		loginLayout.getChildren().addAll(username, password, usnText, pswText, bLogin, bForg, bRegi);
 
 		Pane border = new Pane();
 		border.setPrefSize(300,400);
 		border.setBackground(null);
 
-		Pane enmLogo = new Pane();
-		enmLogo.setPrefSize(400,80);
-		enmLogo.setBackground(null);
+		//Pane enmLogo = new Pane();
+		//enmLogo.setPrefSize(400,80);
+		//enmLogo.setBackground(null);
 
 		AnchorPane log = new AnchorPane(border,loginLayout);
 		log.setTopAnchor(border, 0.0);
@@ -264,7 +264,7 @@ public class Main extends Application {
 		window.setResizable(false);
 
 		regiConfirm = new Label();
-		regiConfirm.setFont(Font.font(STYLESHEET_MODENA, FontWeight.NORMAL, 14));
+		regiConfirm.setFont(Font.font(STYLESHEET_CASPIAN, FontWeight.BOLD, 14));
 
 
 		Pane regisLayout = new Pane();
@@ -319,7 +319,7 @@ public class Main extends Application {
 		regiConfirm.setLayoutX(190);
 		regiConfirm.setLayoutY(370);
 
-		regisLayout.setStyle("-fx-background-color: grey");
+		regisLayout.setStyle("-fx-background-color: Blue");
 
 		regisLayout.getChildren().addAll(username1,usnText1,password1,pswText1,firstName,fnameText,lastName,
 				lnameText,email,emText,address,addText,zip,zipText,state,stateText,ssn,ssnText,securityQ,
@@ -332,32 +332,32 @@ public class Main extends Application {
 		//forgot panel
 
 				id = new Label("Login ID: ");
-				id.setFont(Font.font(STYLESHEET_MODENA, FontWeight.NORMAL, 14));
-				id.setStyle("-fx-text-fill: Black;");
+				id.setFont(Font.font(STYLESHEET_CASPIAN, FontWeight.BOLD, 14));
+				id.setStyle("-fx-text-fill: White;");
 				id.setLayoutX(15);
 				id.setLayoutY(15);
 
 				c1Id = new Label();
-				c1Id.setFont(Font.font(STYLESHEET_MODENA, FontWeight.NORMAL, 14));
+				c1Id.setFont(Font.font(STYLESHEET_CASPIAN, FontWeight.BOLD, 14));
 				c1Id.setStyle("-fx-text-fill: Blue;");
 				c1Id.setLayoutX(150);
 				c1Id.setLayoutY(15);
 
 				q = new Label("Security Question: ");
-				q.setFont(Font.font(STYLESHEET_MODENA, FontWeight.NORMAL, 14));
-				q.setStyle("-fx-text-fill: Black;");
+				q.setFont(Font.font(STYLESHEET_CASPIAN, FontWeight.BOLD, 14));
+				q.setStyle("-fx-text-fill: White;");
 				q.setLayoutX(15);
 				q.setLayoutY(65);
 
 				c1Q = new Label();
-				c1Q.setFont(Font.font(STYLESHEET_MODENA, FontWeight.NORMAL, 14));
-				c1Q.setStyle("-fx-text-fill: Blue;");
+				c1Q.setFont(Font.font(STYLESHEET_CASPIAN, FontWeight.BOLD, 14));
+				c1Q.setStyle("-fx-text-fill: White;");
 				c1Q.setLayoutX(150);
 				c1Q.setLayoutY(65);
 
 				a = new Label("Answer: ");
-				a.setFont(Font.font(STYLESHEET_MODENA, FontWeight.NORMAL, 14));
-				a.setStyle("-fx-text-fill: Black;");
+				a.setFont(Font.font(STYLESHEET_CASPIAN, FontWeight.BOLD, 14));
+				a.setStyle("-fx-text-fill: White;");
 				a.setLayoutX(15);
 				a.setLayoutY(115);
 
@@ -368,13 +368,13 @@ public class Main extends Application {
 				answer.setLayoutY(115);
 
 				yourPsw = new Label("Your password is: ");
-				yourPsw.setFont(Font.font(STYLESHEET_MODENA, FontWeight.NORMAL, 14));
-				yourPsw.setStyle("-fx-text-fill: Black;");
+				yourPsw.setFont(Font.font(STYLESHEET_CASPIAN, FontWeight.BOLD, 14));
+				yourPsw.setStyle("-fx-text-fill: White;");
 				yourPsw.setLayoutX(15);
 				yourPsw.setLayoutY(200);
 
 				retrievedPsw = new Label();
-				retrievedPsw.setFont(Font.font(STYLESHEET_MODENA, FontWeight.NORMAL, 30));
+				retrievedPsw.setFont(Font.font(STYLESHEET_CASPIAN, FontWeight.BOLD, 30));
 				retrievedPsw.setStyle("-fx-text-fill: Red;");
 				retrievedPsw.setLayoutX(15);
 				retrievedPsw.setLayoutY(225);
@@ -393,7 +393,7 @@ public class Main extends Application {
 				btBack2.setLayoutY(175);
 
 				Pane forgotLayout = new Pane();
-				//forgotLayout.setBackground(bg2);
+				forgotLayout.setStyle("-fx-background-color: Gray;");
 				forgotLayout.getChildren().addAll(id, c1Id, q, c1Q, a, answer, forgot, yourPsw, retrievedPsw, btBack2);
 				forgotScene = new Scene(forgotLayout, 775, 300);
 

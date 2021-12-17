@@ -12,9 +12,8 @@ public class Flight {
 	private String arrTime;
 	private String date;
 	private int availability;
+	private String action;
 	
-	
-	   
 
 	public Flight(int flightNo, String airlineName, String departure, String arrival, String depTime,
 			String arrTime, String date, int availability) {
@@ -96,11 +95,27 @@ public class Flight {
 		this.availability = availability;
 	}
 
+
 	@Override
 	public String toString() {
 		return "Flight [flightNo=" + flightNo + ", airlineName=" + airlineName + ", departure=" + departure
 				+ ", arrival=" + arrival + ", depTime=" + depTime + ", arrTime=" + arrTime + ", date=" + date
 				+ ", availability=" + availability + "]";
+	}
+
+	public int getAction() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public static void add(Flight f1) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setAction(String searchFlights) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	

@@ -13,4 +13,5 @@ public class Action {
     public static final String FIND_PASSWORD = "password";
     public static final String FLIGHT_SEARCH = "searchFLights";
     public static final String ALL_FLIGHTS = "allFlights";
+    public static final String SEARCH_FLIGHTS= "searchFlights";
 }

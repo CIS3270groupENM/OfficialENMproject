@@ -67,7 +67,7 @@ public class AccountPanel extends Application {
 	Button btLogout;
 
 	private Customer customer;
-	private Flight flight = new Flight();
+	private Flight flights = new Flight();
 	private ObservableList<Flight> blank = FXCollections.observableArrayList();
 
 	public AccountPanel (Customer customer) {
@@ -86,7 +86,7 @@ public class AccountPanel extends Application {
 		String days[] = { null,"01", "02", "03", "04", "05", "06", "07", "08", "09", "10",
 				"11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
 				"21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"};
-		String years[] = { null,"2021", "2022"};
+		String years[] = { null,"21", "22"};
 
 		window = primaryStage;
 		window.setTitle("ENM Airlines Flight Booking");
@@ -186,9 +186,9 @@ public class AccountPanel extends Application {
 		myFlights.setFont(Font.font(STYLESHEET_MODENA, FontWeight.NORMAL, 20));
 		allFlights.setFont(Font.font(STYLESHEET_MODENA, FontWeight.NORMAL, 20));
 
-		user.setStyle("-fx-text-fill: Black;");
-		myFlights.setStyle("-fx-text-fill: Black;");
-		allFlights.setStyle("-fx-text-fill: Black;");
+		user.setStyle("-fx-text-fill: White;");
+		myFlights.setStyle("-fx-text-fill: White;");
+		allFlights.setStyle("-fx-text-fill: White;");
 
 		labDep = new Label("FROM:");
 		labArr = new Label("TO:");
@@ -200,10 +200,10 @@ public class AccountPanel extends Application {
 		labAir.setFont(Font.font(STYLESHEET_MODENA, FontWeight.NORMAL, 16));
 		labDepDate.setFont(Font.font(STYLESHEET_MODENA, FontWeight.NORMAL, 16));
 
-		labDep.setStyle("-fx-text-fill: Black;");
-		labArr.setStyle("-fx-text-fill: Black;");
-		labAir.setStyle("-fx-text-fill: Black;");
-		labDepDate.setStyle("-fx-text-fill: Black;");
+		labDep.setStyle("-fx-text-fill: White;");
+		labArr.setStyle("-fx-text-fill: White;");
+		labAir.setStyle("-fx-text-fill: White;");
+		labDepDate.setStyle("-fx-text-fill: White;");
 
 		depLocation = new ComboBox(FXCollections.observableArrayList(depLocations));
 		depLocation.setPromptText("ex: ATL");
@@ -228,32 +228,33 @@ public class AccountPanel extends Application {
 			String depD;
 
 			if (airline.getSelectionModel().isEmpty())
-				air = null;
+				air = "%";
 			else
 				air = (String) airline.getSelectionModel().getSelectedItem();
 
 			if (depLocation.getSelectionModel().isEmpty())
-				dep = null;
+				dep = "%";
 			else
 				dep = (String) depLocation.getSelectionModel().getSelectedItem();
 
 			if (arrLocation.getSelectionModel().isEmpty())
-				arr = null;
+				arr = "%";
 			else
 				arr = (String) arrLocation.getSelectionModel().getSelectedItem();
 
 			if (departMo.getValue() == null || departDay.getValue() == null || departYear.getValue() == null) {
-				depD = null;
+				depD = "%";
 			} else {
-				depD = departMo.getValue() + "/" + departDay.getValue() + "/" + departYear.getValue();
+				depD = departMo.getValue() + "-" + departDay.getValue() + "-" + departYear.getValue();
 			}
 
-		});
+			search(air, dep, arr, depD);
+		}); 
 
 		book = new Button("Book");
 		book.setOnAction(e -> {
-			flight = tableViewAllFlights.getSelectionModel().getSelectedItem();
-			bookFlight(customer, flight);
+			flights = tableViewAllFlights.getSelectionModel().getSelectedItem();
+			bookFlight(customer, flights);
 			showFlight(customer);
 		});
 
@@ -262,8 +263,8 @@ public class AccountPanel extends Application {
 
 		delete = new Button("Delete");
 		delete.setOnAction(e -> {
-			flight = tableViewFlights.getSelectionModel().getSelectedItem();
-			deleteFlight(customer, flight);
+			flights = tableViewFlights.getSelectionModel().getSelectedItem();
+			deleteFlight(customer, flights);
 			showFlight(customer);
 		});
 
@@ -279,7 +280,7 @@ public class AccountPanel extends Application {
 		all.setSpacing(15);
 
 		Pane acct = new Pane();
-
+		acct.setStyle("-fx-background-color: Blue;");
 		all.setLayoutX(60);
 		all.setLayoutY(75);
 
@@ -307,7 +308,6 @@ public class AccountPanel extends Application {
 		user.setLayoutY(20);
 		acct.getChildren().addAll(tableViewFlights, tableViewAllFlights, search, update, delete, showAll,
 				book, all, myFlights, allFlights, btLogout, user);
-		//acct.setBackground(bg);
 		acctScene = new Scene(acct);
 		window.setScene(acctScene);
 
@@ -315,6 +315,53 @@ public class AccountPanel extends Application {
 
 	}
 
+	public ObservableList<Flight> search(String air, String dep, String arr, String depD){
+
+		ObservableList<Flight> flights = FXCollections.observableArrayList();
+
+		try {
+			flights = PopUP.search(air, dep ,arr, depD);
+			tableViewAllFlights.setItems(flights);
+		}
+
+		catch (Exception e) {
+
+			Alert a1 = new Alert(Alert.AlertType.ERROR);
+			a1.setTitle("Search Fail");
+			a1.setHeaderText("Search Fail, please try again");
+			a1.setContentText(e.getMessage());
+
+			a1.showAndWait();
+
+		}
+
+		return flights;
+
+	}
+	public ObservableList<Flight> search(Customer c1) {
+
+		c1.setAction(Action.SEARCH_FLIGHTS);
+		ObservableList<Flight> flights = FXCollections.observableArrayList();
+
+		try {
+			flights = PopUP.findFlight(c1);
+			tableViewAllFlights.setItems(flights);
+		}
+
+		catch (Exception e) {
+
+			Alert a1 = new Alert(Alert.AlertType.ERROR);
+			a1.setTitle("Search Fail");
+			a1.setHeaderText("Search Fail, please try again");
+			a1.setContentText(e.getMessage());
+
+			a1.showAndWait();
+
+		}
+
+		return flights;
+
+	}
 
 	public ObservableList<Flight> showAll(Customer c1) {
 
@@ -356,7 +403,6 @@ public class AccountPanel extends Application {
 			a1.setTitle("Search Fail");
 			a1.setHeaderText("Search Fail, please try again");
 			a1.setContentText(e.getMessage());
-
 			a1.showAndWait();
 
 		}
