@@ -249,10 +249,6 @@ public class Main extends Application {
 		border.setPrefSize(300,400);
 		border.setBackground(null);
 
-		//Pane enmLogo = new Pane();
-		//enmLogo.setPrefSize(400,80);
-		//enmLogo.setBackground(null);
-
 		AnchorPane log = new AnchorPane(border,loginLayout);
 		log.setTopAnchor(border, 0.0);
 		log.setLeftAnchor(border, 0.0);
@@ -502,5 +498,4 @@ e.printStackTrace();
 
 
 	
-
-
+//final

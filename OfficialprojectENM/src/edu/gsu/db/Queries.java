@@ -88,26 +88,7 @@ public class Queries {
 	public static final String all_flights =
 			"SELECT * " +
 					"FROM flights ";
-
-	
-	
-	
-/*public static Connection getConnection() throws Exception {
-	
-	try {
-		String driver = "com.mysql.cj.jdbc.Driver";
-		String url = "jdbc:mysql://localhost:3306/CIS3270Project";
-		String username = "root";
-		String password = "Dodgeraccept48@";
-		Class.forName(driver);
-		
-		Connection conn = DriverManager.getConnection(url,username,password);
-		System.out.println("Connected");
-		return conn;
-	} catch(Exception e) {System.out.println(e);}
-	
-	
-	return null;
-}*/
 }
 
+
+//final

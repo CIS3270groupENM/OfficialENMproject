@@ -15,3 +15,6 @@ public class Action {
     public static final String ALL_FLIGHTS = "allFlights";
     public static final String SEARCH_FLIGHTS= "searchFlights";
 }
+
+
+//final

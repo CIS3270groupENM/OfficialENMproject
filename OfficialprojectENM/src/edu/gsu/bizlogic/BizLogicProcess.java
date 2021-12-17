@@ -40,9 +40,6 @@ public class BizLogicProcess {
             case Action.FIND_PASSWORD:
                 statement = DBQueryIM.password(c1);
                 break;
-           // case Action.FLIGHT_NUM:
-               // statement = DBQueryIM.royalty(c1);
-            ///    break;
             case Action.FIRST_NAME:
                 statement = DBQueryIM.first(c1);
                 break;
@@ -69,23 +66,7 @@ public class BizLogicProcess {
         }
         return flight;
     }
-
- /*   public static ObservableList<Flight> searching(Flight f1) throws Exception {
-
-      //  ObservableList<Flight> flight = DBQueryIM.search(f1, air,dep,arr,depD);
-        ObservableList<Flight> flight = FXCollections.observableArrayList();
-        
-        switch (f1.getAction()) {
-        case Action.GET_MY_FLIGHTS:
-            flight = DBQueryIM.search(f1);
-            break;
-        case Action.ALL_FLIGHTS:
-            flight = DBQueryIM.getAllFlights();
-            break;
-
-        return flight;  */
     
-
     public static void process2(Customer c1, Flight f1) throws Exception {
         DBQueryIM.delete(c1,f1);
     }
@@ -102,3 +83,5 @@ public class BizLogicProcess {
 
 
 }
+
+//final

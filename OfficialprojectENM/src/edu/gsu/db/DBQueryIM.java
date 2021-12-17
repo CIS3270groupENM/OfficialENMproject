@@ -281,62 +281,6 @@ public class DBQueryIM {
             conn.close();
         }
     }
-    
-    
-	/*public static ObservableList<Flight> search(Flight f1) throws Exception {
-        Connection conn = getConnection();
-        ObservableList<Flight> flights = FXCollections.observableArrayList();
-        try {
-            PreparedStatement ptmt = conn.prepareStatement(Queries.search_flight);
-            
-            ptmt.setString(1, f1.getAirlineName());
-            ptmt.setString(2, f1.getDeparture());
-            ptmt.setString(3, f1.getArrival());
-            ptmt.setString(4, f1.getDate()); 
-            ptmt.executeQuery(); 
-            
-
-        } catch (SQLException e) {
-            System.out.println(e);
-            throw e;
-
-        } finally {
-            conn.close();
-        }
-        return flights;
-    }   */
-    
-   /* public static ObservableList<Flight> search(Flight f1) throws Exception {
-
-        Connection conn = getConnection();
-        ObservableList<Flight> flights = FXCollections.observableArrayList();
-        Flight flight;
-
-        try {
-
-            // Create a statement
-            PreparedStatement ptmt = conn.prepareStatement(Queries.all_flights);
-
-            ResultSet rs1 = ptmt.executeQuery();
-            while (rs1.next()) {
-                flight = new Flight(rs1.getInt("id"), rs1.getNString("airline"), 
-                        rs1.getNString("dept_city"), rs1.getNString("arrival_city"),
-                        rs1.getNString("dept_time"), rs1.getNString("arrival_time"),
-                        rs1.getNString("date"), rs1.getInt("availability"));
-                System.out.println(flight.toString());
-                flights.add(flight);
-            }
-
-        } catch (SQLException e) {
-            System.out.println(e);
-            throw e;
-
-        } finally {
-            conn.close();
-        }
-        return flights;
-    } */
-    
     public static ObservableList<Flight> search
     (String air, String dep, String arr, String depD) throws Exception {
 
@@ -426,3 +370,6 @@ return flights;
         }
     }
 }
+
+
+//final
